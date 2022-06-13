@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+<body>
+
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: 1fr;
+            justify-items: center;
+            background-color: rgb(240, 240, 216);
+        }
+
+        #buttonContainer {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            height: 100px;
+            margin-top: 15%;
+            background: rgb(118, 143, 118);
+            border-radius: 10px;
+            border: 3px dotted black;
+        }
+
+        .buttonVisual {
+            width: 100px;
+            font-size: 24px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            border-radius: 5px;
+            border: 2px black solid;
+        }
+
+        .buttonVisual:hover {
+            background-color: rgb(251, 251, 188);
+        }
+
+        #display {
+            position: absolute;
+            margin-top: 15%;
+        }
+
+        h1 {
+            font-family:'Courier New', Courier, monospace;
+            font-size: 80px;
+        }
+
+        p {
+            font-size: 100px;
+        }
+
+    
+    </style>
+
+    
+    <h1>Count the Button Presses</h1>
+    <p id = "display">0</p>
+
+    <div id = "buttonContainer">
+        <div><button id = "decrease" class = "buttonVisual">-</div>
+        <div><button id = "reset" class = "buttonVisual">Reset</div>
+        <div><button id = "increase" class = "buttonVisual">+</div>
+    </div>
+    
+    
+    <script>
+        let counter = document.querySelector("#display");
+        let less = document.querySelector("#decrease");
+        let startOver = document.querySelector("#reset");
+        let more = document.querySelector("#increase");
+
+        let counterValue = 0;
+
+      
+
+        less.addEventListener("click", decrement);
+
+        function decrement() {
+            counterValue--;
+            counter.innerHTML = counterValue;
+            if (counterValue < 0) {
+            counter.style.color = "red";
+            }
+        }
+
+        startOver.addEventListener("click", reset);
+
+        function reset() {
+            counterValue = 0;
+            counter.innerHTML = counterValue;
+            if (counterValue == 0) {
+            counter.style.color = "black";
+            }
+        }
+
+        more.addEventListener("click", increment);
+
+        function increment() {
+            counterValue++;
+            counter.innerHTML = counterValue;
+            if (counterValue > 0) {
+            counter.style.color = "green";
+            }
+        }  
+    </script>
+</body>
+</html>
